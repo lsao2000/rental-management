@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Rental Management</string>
+    <string name="brand1">Management</string>
+    <string name="brand2">Rental</string>
+    <string name="home">Home</string>
+    <string name="collections">Lists</string>
+    <string name="rentals">Rentals</string>
+    <string name="computers">Computers</string>
+    </resources>
