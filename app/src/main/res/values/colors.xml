@@ -10,5 +10,7 @@
     <color name="developer">#565651</color>    
     <color name="enable">#FFFFFFFF</color>
     <color name="disable">#696966</color>
-    
+    <color name="back_button">#101010</color>
+    <color name="back_edit">#B3ADAD</color>
+
     </resources>

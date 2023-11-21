@@ -6,4 +6,10 @@
     <string name="collections">Lists</string>
     <string name="rentals">Rentals</string>
     <string name="computers">Computers</string>
-    </resources>
+    <string name="name_organisation">Name Organisation…</string>
+    <string name="type_organisation">Type Organisation…</string>
+    <string name="duree_organisation">Duree Organisation…</string>
+    <string name="btn_location_text">Save</string>
+
+
+</resources>

@@ -8,7 +8,7 @@
         tools:context=".HomeActivity">
 
     <FrameLayout
-    android:id="@+id/frame"
+        android:id="@+id/frame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -65,9 +65,8 @@
     <View
     android:layout_width="30dp"
     android:id="@+id/listsView"
-    android:backgroundTint="@color/disable"
     android:layout_height="30dp"
-    android:background="@drawable/lists"
+    android:background="@drawable/lists_disable"
     />
     <TextView
     android:id="@+id/listsText"
@@ -92,8 +91,7 @@
         android:layout_width="30dp"
         android:id="@+id/rantalsView"
         android:layout_height="30dp"
-        android:backgroundTint="@color/disable"
-        android:background="@drawable/rentals"
+        android:background="@drawable/rentals_disable"
         />
         <TextView
         android:layout_width="wrap_content"
@@ -119,8 +117,7 @@
         android:id="@+id/computerView"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:background="@drawable/computers"
-        android:backgroundTint="@color/disable"
+        android:background="@drawable/computers_disable"
         />
         <TextView
         android:layout_width="wrap_content"

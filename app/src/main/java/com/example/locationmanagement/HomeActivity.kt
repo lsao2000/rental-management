@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import android.widget.LinearLayout
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var homeView: View
@@ -37,52 +40,49 @@ class HomeActivity : AppCompatActivity() {
         listText = findViewById(R.id.listsText)
         rantalsText = findViewById(R.id.rantalsText)
         computersText = findViewById(R.id.computersText)
-        // change the color of the button clicked and the text. 
-        computerParent.setOnClickListener{
-            computersText.setTextColor(Color.parseColor(enableColor)
-            computersView.setBackgroundResource(R.drawable.computers)
-            listsView.setBackgroundResource(R.drawable.lists_disable)
-            listText.setTextColor(Color.parseColor(R.color.disable))
-            homeView.setBackgroundResource(R.drawable.home_disable)
-            homeText.setTextColor(Color.parseColor(R.color.disable))
-            rantalsview.setBackgroundResource(R.drawable.rantals_disable)
-            rantalsText.setTextColor(Color.parseColor(R.color.disable))
+        var addLocationFragment = AddLocation()
+        var listFragment = ListFragment()
+        var rantalFragment = RantalFragment()
+        var computerFragment = ComputersFragment()
 
+              // change the color of the button clicked and the text.import
+        changeFragment(addLocationFragment)
+
+        computerParent.setOnClickListener{           
+            handleButtonAnimation(computersView, computersText, R.drawable.computers, homeView, homeText, R.drawable.home_disable, listsView, listText, R.drawable.lists_disable, rantalsview, rantalsText, R.drawable.rentals_disable, enableColor, disableColor)
+            changeFragment(computerFragment)
         }
         homeParent.setOnClickListener{
-            computersText.setTextColor(Color.parseColor(disableColor))
-            computersView.setBackgroundResource(R.drawable.computers_disable)
-            listsView.setBackgroundResource(R.drawable.lists_disable)
-            listText.setTextColor(Color.parseColor(disableColor)
-            homeView.setBackgroundResource(R.drawable.home)
-            homeText.setTextColor(Color.parseColor(enableColor))
-            rantalsview.setBackgroundResource(R.drawable.rantals_disable)
-            rantalsText.setTextColor(Color.parseColor(disableColor))
-
+            handleButtonAnimation(homeView, homeText, R.drawable.home, computersView, computersText, R.drawable.computers_disable, listsView, listText, R.drawable.lists_disable, rantalsview, rantalsText, R.drawable.rentals_disable, enableColor, disableColor)
+            changeFragment(addLocationFragment)
         }
         rantalParent.setOnClickListener{
-            computersText.setTextColor(Color.parseColor(R.color.disable))
-            computersView.setBackgroundResource(R.drawable.computers_disable)
-            listsView.setBackgroundResource(R.drawable.lists_disable)
-            listText.setTextColor(Color.parseColor(R.color.disable))
-            homeView.setBackgroundResource(R.drawable.home_disable)
-            homeText.setTextColor(Color.parseColor(R.color.disable))
-            rantalsview.setBackgroundResource(R.drawable.rantals)
-            rantalsText.setTextColor(Color.parseColor(R.color.enable))
-
+            handleButtonAnimation(rantalsview, rantalsText, R.drawable.rentals, homeView, homeText, R.drawable.home_disable, listsView, listText, R.drawable.lists_disable, computersView, computersText, R.drawable.computers_disable, enableColor, disableColor)
+            changeFragment(rantalFragment)
         }
         listParent.setOnClickListener{
-            computersText.setTextColor(Color.parseColor(R.color.disable))
-            computersView.setBackgroundResource(R.drawable.computers_disable)
-            listsView.setBackgroundResource(R.drawable.lists)
-            listText.setTextColor(Color.parseColor(R.color.enable))
-            homeView.setBackgroundResource(R.drawable.home_disable)
-            homeText.setTextColor(Color.parseColor(R.color.disable))
-            rantalsview.setBackgroundResource(R.drawable.rantals_disable)
-            rantalsText.setTextColor(Color.parseColor(R.color.disable))
-
+            handleButtonAnimation(listsView, listText, R.drawable.lists, homeView, homeText, R.drawable.home_disable, computersView, computersText, R.drawable.computers_disable, rantalsview, rantalsText, R.drawable.rentals_disable, enableColor, disableColor)
+            changeFragment(listFragment)
         }
-            }
+        }
+    fun handleButtonAnimation(enableView: View, enableText: TextView, enableBackground: Int, disableView1: View, disableText1: TextView, disableBackground1: Int,disableView2: View,disableText2: TextView, disableBackground2: Int,disableView3: View,disableText3: TextView, disableBackground3: Int,enableColor: String, disableColor: String)  {
+        enableView.setBackgroundResource(enableBackground)
+        enableText.setTextColor(Color.parseColor(enableColor))
+        disableView1.setBackgroundResource(disableBackground1)
+        disableText1.setTextColor(Color.parseColor(disableColor))
+         disableView2.setBackgroundResource(disableBackground2)
+        disableText2.setTextColor(Color.parseColor(disableColor))
+        disableView3.setBackgroundResource(disableBackground3)
+        disableText3.setTextColor(Color.parseColor(disableColor))
+    }
+    fun changeFragment(fragmentReplacment:Fragment ) {
+
+        var fragment = supportFragmentManager
+        var fragmentTransaction = fragment.beginTransaction()
+        fragmentTransaction.replace(R.id.frame, fragmentReplacment)
+        fragmentTransaction.commit()
+
+    }
 }
 
 
