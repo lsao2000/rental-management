@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Button
+import DBHelper
 import android.widget.Toast
 
 class AddLocation : Fragment() {
@@ -31,7 +32,17 @@ class AddLocation : Fragment() {
             nameOrgaValue = nameOrganisation.text.toString()
             typeOragValue = typeOrganisation.text.toString()
             dureeOragValue = dureeOrganisation.text.toString()
-            Toast.makeText(this.context,"name: $nameOrgaValue\ntype: $typeOragValue\nduree: $dureeOragValue", Toast.LENGTH_LONG).show()
+            try {
+                var db = DBHelper(this.context, null)
+                db.addLocation(nameOrgaValue, typeOragValue, dureeOragValue.toInt())
+                //Toast.makeText(this.context,"name: $nameOrgaValue\ntype: $typeOragValue\nduree: $dureeOragValue", Toast.LENGTH_LONG).show()
+                nameOrganisation.text.clear()
+                typeOrganisation.text.clear()
+                dureeOrganisation.text.clear()
+            } catch(e: Exception){
+                Toast.makeText(this.context, "the addition was not success complete. ", Toast.LENGTH_LONG).show()
+
+            }
         }
 
         return  view
